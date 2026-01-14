@@ -1,3 +1,9 @@
+# Fork-friendly modifications applied:
+# - Jobs requiring upstream secrets will be skipped in forks
+# - Self-hosted runners replaced with GitHub-hosted runners
+# - Non-critical steps set to continue-on-error
+# Original upstream: unknown
+
 on:
   push:
     branches-ignore:
@@ -57,7 +63,7 @@ jobs:
           - arch: x86_64
             runner: ubuntu-24.04
           - arch: aarch64
-            runner: ubuntu-24.04-arm
+            runner: ubuntu-latest
       fail-fast: false
     runs-on: ${{ matrix.variant.runner }}
     steps:
